@@ -1,0 +1,17 @@
+# Create a GitHub action to email a report daily at 6am
+name: Email report
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Send email with report
+        run: echo "Email report" | mail -s "Daily report"
